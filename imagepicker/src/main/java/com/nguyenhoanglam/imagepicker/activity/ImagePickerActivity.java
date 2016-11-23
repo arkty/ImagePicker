@@ -193,7 +193,17 @@ public class ImagePickerActivity extends AppCompatActivity implements OnImageCli
         super.onResume();
         getDataWithPermission();
     }
+    
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("currentImagePath", currentImagePath);
+    }
 
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        currentImagePath = savedInstanceState.getString("currentImagePath");
+    }
+    
     /**
      * Set image adapter
      * 1. Set new data
